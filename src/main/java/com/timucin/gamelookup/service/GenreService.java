@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.timucin.gamelookup.domain.Genre;
 import com.timucin.gamelookup.repository.GenreRepository;
 
+@Service
 public class GenreService {
 	
 private final GenreRepository genreRepository;

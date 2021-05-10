@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.timucin.gamelookup.domain.Game;
 import com.timucin.gamelookup.repository.GameRepository;
 
+@Service
 public class GameService {
 	
 	private final GameRepository gameRepository;
