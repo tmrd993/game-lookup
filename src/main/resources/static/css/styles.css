@@ -23,11 +23,44 @@ body {
 }
 
 .topnav a.active {
-  background-color: #04AA6D;
+  background-color: #536ffa;
   color: white;
 }
 
 /* Right aligned navigation items */
 .topnav-right {
 	float: right
+}
+
+
+/* Style the web search field */
+.search input[type=text] {
+  border: 1px solid grey;
+  border-radius: 5px;
+  height: 25px;
+  width: 100%;
+  padding: 2px 23px 2px 30px;
+  margin-top: 10px;
+  margin-left: 10px;
+  outline: 0;
+  float: left;
+  width: 30%;
+  background: white;
+}
+
+/* style the web search submit button */
+.search button {
+  float: left;
+  padding: 6px;
+  margin-top: 8px;
+  margin-left: 16px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.search button:hover {
+	background: #ccc;
 }
