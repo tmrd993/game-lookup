@@ -48,7 +48,7 @@ public class RawgGameDataFetcher implements GameDataFetcher {
 		try {
 			ResponseBody responseBody = client.newCall(request).execute().body();
 			
-			logger.info(responseBody.toString());
+			logger.info(responseBody.string());
 			
 			//TODO: implement json deserializer and convert response to list of games
 			
