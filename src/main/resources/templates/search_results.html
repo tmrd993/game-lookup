@@ -4,28 +4,22 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Lookup Web-Search Page</title>
+  <title>Game Lookup Home Page</title>
   <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 
 <body>
   <div class="topnav">
     <a href="home">Home</a>
-    <a class="active" href="web_search">Search</a>
+    <a href="web_search">Search</a>
   	<div class="topnav-right">
       <a href="contact">Contact</a>
   	  <a href="about">About</a>
 	</div>
   </div>
-
-  <div class="search">
-    <form action="#" th:action="@{/web_search}" method="post">
-    
-      <input type="text" placeholder="Search..." name="query">
-      <button type="submit">Submit</button>
-      
-    </form>
+	
+  <div style="padding-left:16px">
+    <h2>Results should be here</h2>
   </div>
- 
 </body>
 </html>
