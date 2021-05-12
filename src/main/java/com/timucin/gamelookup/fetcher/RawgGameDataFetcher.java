@@ -13,6 +13,9 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriUtils;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.timucin.gamelookup.domain.Game;
 
 import okhttp3.OkHttpClient;
@@ -48,9 +51,14 @@ public class RawgGameDataFetcher implements GameDataFetcher {
 		try {
 			ResponseBody responseBody = client.newCall(request).execute().body();
 			
-			logger.info(responseBody.string());
+			String consumedResponse = responseBody.string();
 			
-			//TODO: implement json deserializer and convert response to list of games
+			JsonNode rootNode = new ObjectMapper().readTree(consumedResponse);
+			ArrayNode resultNodes = (ArrayNode) rootNode.get("results");
+			
+			for(JsonNode resultNode : resultNodes) {
+				//TODO: implement json deserializer
+			}
 			
 		} catch (IOException e) {
 			e.printStackTrace();
