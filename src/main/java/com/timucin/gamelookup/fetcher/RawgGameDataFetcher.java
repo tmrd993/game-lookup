@@ -57,7 +57,9 @@ public class RawgGameDataFetcher implements GameDataFetcher {
 			ArrayNode resultNodes = (ArrayNode) rootNode.get("results");
 			
 			for(JsonNode resultNode : resultNodes) {
-				//TODO: implement json deserializer
+				Game game = new ObjectMapper().readValue(resultNode.toString(), Game.class);
+				logger.info("Deserialized game: " + game);
+				queryResults.add(game);
 			}
 			
 		} catch (IOException e) {

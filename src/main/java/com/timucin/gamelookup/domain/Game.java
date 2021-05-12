@@ -14,8 +14,12 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.timucin.gamelookup.domainutils.GameDeserializer;
+
 @Entity
 @Table(name = "game")
+@JsonDeserialize(using = GameDeserializer.class)
 public class Game {
 	
 	@Id
@@ -102,64 +106,5 @@ public class Game {
 				+ "]";
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((esrbRating == null) ? 0 : esrbRating.hashCode());
-		result = prime * result + ((genres == null) ? 0 : genres.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((metacriticScore == null) ? 0 : metacriticScore.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((platforms == null) ? 0 : platforms.hashCode());
-		result = prime * result + ((releaseDate == null) ? 0 : releaseDate.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Game other = (Game) obj;
-		if (esrbRating == null) {
-			if (other.esrbRating != null)
-				return false;
-		} else if (!esrbRating.equals(other.esrbRating))
-			return false;
-		if (genres == null) {
-			if (other.genres != null)
-				return false;
-		} else if (!genres.equals(other.genres))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (metacriticScore == null) {
-			if (other.metacriticScore != null)
-				return false;
-		} else if (!metacriticScore.equals(other.metacriticScore))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (platforms == null) {
-			if (other.platforms != null)
-				return false;
-		} else if (!platforms.equals(other.platforms))
-			return false;
-		if (releaseDate == null) {
-			if (other.releaseDate != null)
-				return false;
-		} else if (!releaseDate.equals(other.releaseDate))
-			return false;
-		return true;
-	}
+	
 }
