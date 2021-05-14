@@ -19,16 +19,14 @@
   </div>
   
   <div th:each="game : ${searchResults}">
-    <div class="inline-block-child"> 
-      <div class="roundcard">
+
+    <div class="roundcard">
      
-      <div class="gamedata">
-        <p th:text="${game.name}"></p>
-      </div>
+    <div class="gamedata">
+      <p th:text="${game.name}"></p>
+    </div>
       
     </div>
-    </div>
-  </div>	
-	
+  </div>
 </body>
 </html>
