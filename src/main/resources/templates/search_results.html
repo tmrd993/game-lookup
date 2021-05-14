@@ -4,7 +4,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Lookup Home Page</title>
+  <title>Game Lookup Web search results page</title>
   <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 
@@ -17,9 +17,18 @@
   	  <a href="about">About</a>
 	</div>
   </div>
+  
+  <div th:each="game : ${searchResults}">
+    <div class="inline-block-child"> 
+      <div class="roundcard">
+     
+      <div class="gamedata">
+        <p th:text="${game.name}"></p>
+      </div>
+      
+    </div>
+    </div>
+  </div>	
 	
-  <div style="padding-left:16px">
-    <h2>Results should be here</h2>
-  </div>
 </body>
 </html>

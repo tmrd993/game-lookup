@@ -29,44 +29,43 @@ import okhttp3.ResponseBody;
 @Service
 @Primary
 public class RawgGameDataFetcher implements GameDataFetcher {
-	
+
 	Logger logger = LoggerFactory.getLogger(RawgGameDataFetcher.class);
-	
+
 	@Value("${game.db.rawg.url}")
 	private String rawgRequestUrl;
 
 	@Override
 	public List<Game> fetchAll(@NonNull String query) {
-		
+
 		OkHttpClient client = new OkHttpClient();
-		
+
 		String fullRequestUrl = rawgRequestUrl + UriUtils.encodeQuery(query, StandardCharsets.UTF_8);
-		
-		Request request = new Request.Builder()
-				.url(fullRequestUrl)
-				.build();
-		
+
+		Request request = new Request.Builder().url(fullRequestUrl).build();
+
 		List<Game> queryResults = new ArrayList<>();
-		
+
 		try {
 			ResponseBody responseBody = client.newCall(request).execute().body();
-			
+
 			String consumedResponse = responseBody.string();
-			
+
 			JsonNode rootNode = new ObjectMapper().readTree(consumedResponse);
 			ArrayNode resultNodes = (ArrayNode) rootNode.get("results");
-			
-			for(JsonNode resultNode : resultNodes) {
+
+			for (JsonNode resultNode : resultNodes) {
 				Game game = new ObjectMapper().readValue(resultNode.toString(), Game.class);
 				logger.info("Deserialized game: " + game);
 				queryResults.add(game);
 			}
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		return queryResults;
 	}
+
 
 }

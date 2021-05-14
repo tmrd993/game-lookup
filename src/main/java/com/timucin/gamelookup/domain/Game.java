@@ -42,6 +42,8 @@ public class Game {
 	private Integer metacriticScore;
 	
 	private String esrbRating;
+	
+	private String coverImageUrl;
 
 	public Long getId() {
 		return id;
@@ -97,6 +99,14 @@ public class Game {
 
 	public void setEsrbRating(String esrbRating) {
 		this.esrbRating = esrbRating;
+	}
+
+	public String getCoverImageUrl() {
+		return coverImageUrl;
+	}
+
+	public void setCoverImageUrl(String coverImageUrl) {
+		this.coverImageUrl = coverImageUrl;
 	}
 
 	@Override

@@ -40,6 +40,11 @@ public class GameDeserializer extends JsonDeserializer<Game> {
 			esrbRating = root.get("esrb_rating").get("name").asText();
 		}
 		
+		String backgroundImageUrl = "";
+		if(!root.get("background_image").isNull()) {
+			backgroundImageUrl = root.get("background_image").asText();
+		}
+		
 		List<Genre> genres = new ArrayList<>();
 		if(!root.get("genres").isNull()) {
 			ArrayNode genreNode = (ArrayNode) root.get("genres");
@@ -64,6 +69,7 @@ public class GameDeserializer extends JsonDeserializer<Game> {
 		game.setMetacriticScore(metacriticScore);
 		game.setPlatforms(platforms);
 		game.setReleaseDate(releaseDate);
+		game.setCoverImageUrl(backgroundImageUrl);
 		
 		return game;
 	}
