@@ -23,7 +23,13 @@
     <div class="roundcard">
      
     <div class="gamedata">
-      <p th:text="${game.name}"></p>
+      <p th:text="${'Title: ' + game.name}"></p>
+      <span>Platforms: </span>
+      <span th:each="platform, iterStat : ${game.platforms}" th:text="!${iterStat.last} ? ${platform} + ', ' : ${platform}">Platforms</span>
+      <p>Genres: <span th:each="genre, iterStat : ${game.genres}" th:text="!${iterStat.last} ? ${genre.name} + ', ' : ${genre.name}"></span></p>
+      <p th:text="${'Release Date: ' + game.releaseDate}"></p>
+      <p th:text="${'Metacritic Score: ' + game.metacriticScore}"></p>
+      <p th:text="${'ESRB Rating: ' + game.esrbRating}"></p>
     </div>
       
     </div>
