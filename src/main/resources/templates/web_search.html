@@ -9,19 +9,20 @@
 </head>
 
 <body>
+  <h1 class="header">Game Lookup</h1>
   <div class="topnav">
-    <a href="home">Home</a>
-    <a class="active" href="web_search">Search</a>
+    <a href="/home">Home</a>
+    <a class="active" href="/web_search">Search</a>
   	<div class="topnav-right">
-      <a href="contact">Contact</a>
-  	  <a href="about">About</a>
+      <a href="/contact">Contact</a>
+  	  <a href="/about">About</a>
 	</div>
   </div>
 
   <div class="search">
     <form action="#" th:action="@{/web_search/search}" method="get">
     
-      <input type="text" placeholder="Search..." name="query">
+      <input type="text" placeholder="Search..." name="query" required>
       <button type="submit">Submit</button>
       
     </form>
