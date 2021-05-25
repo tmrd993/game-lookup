@@ -3,7 +3,9 @@ package com.timucin.gamelookup.domainutils;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -45,7 +47,7 @@ public class GameDeserializer extends JsonDeserializer<Game> {
 			backgroundImageUrl = root.get("background_image").asText();
 		}
 		
-		List<Genre> genres = new ArrayList<>();
+		Set<Genre> genres = new HashSet<>();
 		if(!root.get("genres").isNull()) {
 			ArrayNode genreNode = (ArrayNode) root.get("genres");
 			for(JsonNode genreField : genreNode) {

@@ -2,6 +2,7 @@ package com.timucin.gamelookup.domain;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
@@ -32,7 +33,7 @@ public class Game {
 	@JoinTable(name = "game_genre",
 		joinColumns = @JoinColumn(name = "game_id"),
 		inverseJoinColumns = @JoinColumn(name = "genre_id"))
-	private List<Genre> genres;
+	private Set<Genre> genres;
 	
 	@ElementCollection
 	private List<String> platforms;
@@ -44,6 +45,12 @@ public class Game {
 	private String esrbRating;
 	
 	private String coverImageUrl;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "game_collection",
+		joinColumns = @JoinColumn(name = "game_id"),
+		inverseJoinColumns = @JoinColumn(name = "game_collection_id"))
+	private List<GameCollection> gameCollection;
 
 	public Long getId() {
 		return id;
@@ -61,11 +68,11 @@ public class Game {
 		this.name = name;
 	}
 
-	public List<Genre> getGenres() {
+	public Set<Genre> getGenres() {
 		return genres;
 	}
 
-	public void setGenres(List<Genre> genres) {
+	public void setGenres(Set<Genre> genres) {
 		this.genres = genres;
 	}
 
@@ -107,6 +114,14 @@ public class Game {
 
 	public void setCoverImageUrl(String coverImageUrl) {
 		this.coverImageUrl = coverImageUrl;
+	}
+
+	public List<GameCollection> getGameCollection() {
+		return gameCollection;
+	}
+
+	public void setGameCollection(List<GameCollection> gameCollection) {
+		this.gameCollection = gameCollection;
 	}
 
 	@Override
