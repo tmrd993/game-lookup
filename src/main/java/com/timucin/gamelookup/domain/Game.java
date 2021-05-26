@@ -36,7 +36,7 @@ public class Game {
 	private Set<Genre> genres;
 	
 	@ElementCollection
-	private List<String> platforms;
+	private Set<String> platforms;
 	
 	private LocalDate releaseDate;
 	
@@ -47,10 +47,10 @@ public class Game {
 	private String coverImageUrl;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "game_collection",
+	@JoinTable(name = "game_collections",
 		joinColumns = @JoinColumn(name = "game_id"),
 		inverseJoinColumns = @JoinColumn(name = "game_collection_id"))
-	private List<GameCollection> gameCollection;
+	private List<Shelf> gameCollection;
 
 	public Long getId() {
 		return id;
@@ -76,11 +76,11 @@ public class Game {
 		this.genres = genres;
 	}
 
-	public List<String> getPlatforms() {
+	public Set<String> getPlatforms() {
 		return platforms;
 	}
 
-	public void setPlatforms(List<String> platforms) {
+	public void setPlatforms(Set<String> platforms) {
 		this.platforms = platforms;
 	}
 
@@ -116,11 +116,11 @@ public class Game {
 		this.coverImageUrl = coverImageUrl;
 	}
 
-	public List<GameCollection> getGameCollection() {
+	public List<Shelf> getGameCollection() {
 		return gameCollection;
 	}
 
-	public void setGameCollection(List<GameCollection> gameCollection) {
+	public void setGameCollection(List<Shelf> gameCollection) {
 		this.gameCollection = gameCollection;
 	}
 

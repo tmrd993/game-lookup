@@ -31,12 +31,20 @@ private final GenreRepository genreRepository;
 		return genreRepository.save(genre);
 	}
 	
+	public List<Genre> saveAll(Iterable<Genre> genres) {
+		return genreRepository.saveAll(genres);
+	}
+	
 	public void delete(Genre genre) {
 		genreRepository.delete(genre);
 	}
 	
 	public void deleteById(Long id) {
 		genreRepository.deleteById(id);
+	}
+	
+	public Optional<Genre> findByName(String name) {
+		return genreRepository.findByName(name);
 	}
 
 }

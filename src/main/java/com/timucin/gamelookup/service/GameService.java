@@ -31,6 +31,10 @@ public class GameService {
 		return gameRepository.save(game);
 	}
 	
+	public List<Game> saveAll(Iterable<Game> games) {
+		return gameRepository.saveAll(games);
+	}
+	
 	public void delete(Game game) {
 		gameRepository.delete(game);
 	}
@@ -39,7 +43,7 @@ public class GameService {
 		gameRepository.deleteById(id);
 	}
 	
-	public List<Game> findByName(String name) {
+	public Optional<Game> findByName(String name) {
 		return gameRepository.findByName(name);
 	}
 

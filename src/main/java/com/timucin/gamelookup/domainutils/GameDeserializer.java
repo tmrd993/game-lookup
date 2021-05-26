@@ -2,9 +2,7 @@ package com.timucin.gamelookup.domainutils;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.core.JsonParser;
@@ -57,7 +55,7 @@ public class GameDeserializer extends JsonDeserializer<Game> {
 			}
 		}
 		
-		List<String> platforms = new ArrayList<>();
+		Set<String> platforms = new HashSet<>();
 		if(!root.get("platforms").isNull()) {
 			ArrayNode platformNode = (ArrayNode) root.get("platforms");
 			for(JsonNode platformField : platformNode) {
