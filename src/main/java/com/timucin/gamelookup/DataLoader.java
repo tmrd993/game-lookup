@@ -54,8 +54,6 @@ public class DataLoader implements CommandLineRunner {
 		Genre rpg = new Genre();
 		rpg.setName("RPG");
 		
-		
-		
 		Game gameOne = new Game();
 		gameOne.setName("Halo: Combat Evolved");
 		gameOne.setCoverImageUrl("");
@@ -87,6 +85,7 @@ public class DataLoader implements CommandLineRunner {
 		
 		gameService.saveAll(List.of(gameOne, gameTwo, gameThree));
 		gameCollectionService.save(predefinedCollection);
+		
 	}
 
 }

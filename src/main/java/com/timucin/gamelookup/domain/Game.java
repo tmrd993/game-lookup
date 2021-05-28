@@ -46,10 +46,7 @@ public class Game {
 	
 	private String coverImageUrl;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "game_collections",
-		joinColumns = @JoinColumn(name = "game_id"),
-		inverseJoinColumns = @JoinColumn(name = "game_collection_id"))
+	@ManyToMany(mappedBy = "games")
 	private List<Shelf> gameCollection;
 
 	public Long getId() {
