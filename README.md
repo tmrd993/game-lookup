@@ -8,5 +8,6 @@ Full stack web application using Spring Boot to manage video game collections wi
 4. Import the project to your IDE as a maven project
 5. Run the GameLookupApplication class
 6. Open up your browser and navigate to localhost:8080
+7. Log-in using username: "user", password: "password" (or change the credentials in the webconfig class)
 
 Note: An internet connection is required to use the web search feature
