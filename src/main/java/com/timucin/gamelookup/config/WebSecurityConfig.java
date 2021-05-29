@@ -1,7 +1,5 @@
 package com.timucin.gamelookup.config;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,11 +21,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-	    http.authorizeRequests()
+	    http.authorizeRequests().antMatchers("/home", "/home.html", "/", "/css/**").permitAll()
 	        .anyRequest().authenticated()
-	        .and()
-	        .formLogin().and()
-	        .httpBasic();
+	        .and().formLogin().loginPage("/login").permitAll()
+	        .and().logout().permitAll();
 	}
 	
 	@Bean

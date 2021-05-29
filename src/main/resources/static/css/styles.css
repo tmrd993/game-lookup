@@ -98,4 +98,26 @@ body {
   margin-right:3px;	
 }
 
+.footer {
+  overflow: hidden;
+  background-color: #58d68d;
+  border-radius: 5px;
+  bottom: 8px;
+  right: 8px;
+  position: fixed;
+}
+
+.footer a {
+  float: right;
+  color:  #fdfefe;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.footer a:hover {
+	background-color:  #2ecc71;
+}
+
 
