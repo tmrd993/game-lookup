@@ -17,9 +17,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
-	DataSource dataSource;
-	
-	@Autowired
 	public void webSecurityConfiguration(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication().withUser("user").password(passwordEncoder().encode("password")).roles("USER");
 	}
