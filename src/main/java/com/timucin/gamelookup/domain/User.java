@@ -1,5 +1,6 @@
 package com.timucin.gamelookup.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,12 +13,21 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(unique = true)
 	private String username;
 	
 	// TODO: this should be a hash, not plaintext
 	private String password;
 	
 	private String email;
+	
+	public User(String username, String password, String email) {
+		this.username = username;
+		this.password = password;
+		this.email = email;
+	}
+	
+	public User() {}
 	
 	public Long getId() {
 		return id;

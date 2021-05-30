@@ -9,5 +9,6 @@ import com.timucin.gamelookup.domain.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 	
 	public Optional<User> findByEmail(String email);
+	public User findByUsername(String username);
 
 }
