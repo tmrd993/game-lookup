@@ -13,8 +13,14 @@
   <div class="topnav">
     <a href="/home">Home</a>
     <a class="active" href="/web_search">Search</a>
-  	<div class="topnav-right">
-  	   <a href="login">Log in</a>
+  	<div class="topnav-right" th:with="currentUser=${#httpServletRequest.userPrincipal?.name}">
+  	   <div th:if="${currentUser != null}">
+  	    <span th:text="${'Logged in as: ' + currentUser}"></span>
+  	    <a href="javascript: document.logoutForm.submit()" role="menuitem"> Log out</a>
+  	    <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+          <input hidden="true" type="submit" value="Sign Out"/>
+        </form> 
+  	  </div> 
 	</div>
   </div>
 

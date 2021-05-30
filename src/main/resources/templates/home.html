@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
@@ -15,12 +15,16 @@
     <a href="web_search">Search</a>
   	<div class="topnav-right" th:with="currentUser=${#httpServletRequest.userPrincipal?.name}">
   	  <div th:if="${currentUser != null}">
-  	    <a href="/logout">Log out</a>
+  	    <span th:text="${'Logged in as: ' + currentUser}"></span>
+  	    <a href="javascript: document.logoutForm.submit()" role="menuitem"> Log out</a>
+  	    <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+          <input hidden="true" type="submit" value="Sign Out"/>
+        </form> 
   	  </div>
   	  <div th:unless="${currentUser != null}">
   	    <a href="login">Log in</a>
   	  </div>
-	</div>
+    </div>
   </div>
 	
   <div style="padding-left:16px">
