@@ -1,12 +1,19 @@
 package com.timucin.gamelookup.dto;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.timucin.gamelookup.validation.PasswordsMatch;
+import com.timucin.gamelookup.validation.UniqueEmail;
+import com.timucin.gamelookup.validation.UniqueUser;
+
+@PasswordsMatch
 public class UserDto {
 	
 	@NotNull
 	@NotEmpty
+	@UniqueUser
 	private String username;
 	
 	@NotNull
@@ -16,6 +23,8 @@ public class UserDto {
 	
 	@NotNull
 	@NotEmpty
+	@Email
+	@UniqueEmail
 	private String email;
 
 	public String getUsername() {

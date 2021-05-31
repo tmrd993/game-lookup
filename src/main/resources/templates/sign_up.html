@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Lookup Sign Up</title>
+  
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+  <h1 class="header">Game Lookup</h1>
+  <div class="topnav">
+    <a href="home">Home</a>
+    <a href="web_search">Search</a>
+  	<div class="topnav-right">
+      <a class="active" href="login">Log in</a>
+	</div>
+  </div>
+  
+  <div class="login-container">
+    <div class="login">
+      <div class="login-header">
+        <h2 class="animation a1">Sign Up</h2>
+        <h4 class="animation a2">Fill in the form below to register</h4>
+      </div>
+  
+      <form th:action="@{/sign_up}" name="signUpForm" method="post" th:object="${userDto}">   
+     
+        <div class="login-form">
+          <label for="username"></label>
+          <input type="text" class="form-field   animation a3" id="username" 
+            name="username" placeholder="Username" th:field="*{username}">
+            
+          <label for="email"></label>
+          <input type="text" class="form-field animation a3" id="email" 
+            name="email" placeholder="Email" th:field="*{email}">
+          
+          <label for="password"></label>
+          <input type="password" class="form-field animation a4" id="password" 
+            name="password" autocomplete="off" placeholder="Password" th:field="*{password}">
+            
+          <label for="passwordConfirm"></label>
+          <input type="password" class="form-field animation a4" id="passwordConfirm" 
+            name="passwordConfirm" autocomplete="off" placeholder="Confirm password" th:field="*{matchingPassword}">
+          
+          <input type="submit" class="animation a6" value="Sign up">
+        </div>
+        <p>Already registered? <a href="login">Log in</a></p>
+         <div th:if="${param.error}" class="alert alert-error">
+           <p style="color: red;">Invalid username or password.</p>
+         </div>
+     
+      </form>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <a href="contact">Contact</a>
+    <a href="about">About</a>
+  </div>
+</body>
+
+
+</html>

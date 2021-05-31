@@ -190,6 +190,11 @@ body {
   font-family: Calibri, sans-serif;
 }
 
+.login-form > input[type="submit"]:hover {
+	background: linear-gradient(to right, #229954 0%, #52be80 100%);
+	cursor: pointer;
+}
+
 .animation {
   animation-name: move;
   animation-duration: .4s;
