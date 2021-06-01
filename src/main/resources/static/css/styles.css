@@ -1,12 +1,19 @@
 body {
   font-family: Calibri, Arial, Helvetica, sans-serif;
-  background-color:  #d7dbdd;
+}
+
+html {
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='545' preserveAspectRatio='none' viewBox='0 0 1440 545'%3e%3cg mask='url(%26quot%3b%23SvgjsMask2046%26quot%3b)' fill='none'%3e%3crect width='1440' height='545' x='0' y='0' fill='url(%23SvgjsLinearGradient2047)'%3e%3c/rect%3e%3cpath d='M89.61 623.83C213.72 619.81 315.83 429.18 546.44 428.88 777.04 428.58 774.85 497.01 1003.26 497 1231.68 497.01 1344.62 429.07 1460.09 428.88' stroke='rgba(170%2c 185%2c 200%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M837.67 630.65C912.26 630.41 898.48 579.22 1130.8 575.1 1363.11 570.98 1558.25 334.73 1717.05 329.85' stroke='rgba(170%2c 185%2c 200%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M629.43 580.71C797.83 554.38 884.84 150.97 1157.03 148.88 1429.21 146.79 1546.55 310.52 1684.62 312.38' stroke='rgba(170%2c 185%2c 200%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M522.53 557.76C637.74 547.81 713.32 312.66 914.11 311.54 1114.89 310.42 1109.89 379.66 1305.68 379.66 1501.47 379.66 1597.9 311.79 1697.26 311.54' stroke='rgba(170%2c 185%2c 200%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M702.48 548.08C818.96 519.65 752.99 221.88 1037.88 205.26 1322.77 188.64 1533.97 11.06 1708.68 9.06' stroke='rgba(170%2c 185%2c 200%2c 1)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask2046'%3e%3crect width='1440' height='545' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='50%25' y1='100%25' x2='50%25' y2='0%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient2047'%3e%3cstop stop-color='%230e2a47' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(157%2c 173%2c 224%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .header {
   overflow: hidden;
-  background-color: #58d68d;
-  color:  #fdfefe;	
+  background-color: #eff0f6;
+  color:  black;	
   padding: 14px 16px;
   text-decoration: none;
   font-size: 25px;
@@ -15,13 +22,13 @@ body {
 
 .topnav {
   overflow: hidden;
-  background-color: #58d68d;
+  background-color: #eff0f6;
   border-radius: 5px;
 }
 
 .topnav a, .topnav span {
   float: left;
-  color:  #fdfefe;
+  color:  black;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -29,11 +36,11 @@ body {
 }
 
 .topnav a:hover {
-  background-color:  #2ecc71;
+  background-color: #ff4242;
 }
 
 .topnav a.active {
-  background-color: #239b56;
+  background-color: #ca2301;
   color: white;
 }
 
@@ -67,19 +74,19 @@ body {
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  background-color: #58d68d;
-  color: white;
+  background-color: #eff0f6;
+  color: black;
 }
 
 .search button:hover, .login-form button:hover {
-	background: #58d68d;
+	background: #ff4242;
 	opacity: 0.7;
 }
 
 /* style cards that hold the game data */
 .roundcard {
   border-radius: 25px;
-  border: 4px solid #58d68d;
+  border: 4px solid #eff0f6;
   margin-top:7px;
   margin-bottom:7px;
   margin-left:6px;
@@ -100,7 +107,7 @@ body {
 
 .footer {
   overflow: hidden;
-  background-color: #58d68d;
+  background-color: #eff0f6;
   border-radius: 5px;
   bottom: 8px;
   right: 8px;
@@ -109,7 +116,7 @@ body {
 
 .footer a {
   float: right;
-  color:  #fdfefe;
+  color:  black;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -117,7 +124,12 @@ body {
 }
 
 .footer a:hover {
-  background-color:  #2ecc71;
+  background-color:  #ff4242;
+}
+
+.footer a.active {
+	background-color: #ca2301;
+	color: white;
 }
 
 .login-container {
@@ -139,14 +151,14 @@ body {
 
 .login-header > h2 {
   margin: 0;
-  color: #58d68d;
+  color: #ca2301;
 }
 
 .login-header > h4 {
   margin-top: 10px;
-  font-weight: normal;
-  font-size: 15px;
-  color: rgba(0,0,0,.4);
+  font-weight: thick;
+  font-size: 16px;
+  color: black;
 }
 
 .login-form {
@@ -176,13 +188,17 @@ body {
 }
 
 .form-field:focus {
-  border-color: #58d68d;
+  border-color: black;
+}
+
+.login-anchor {
+	color: #9ca7fd;
 }
 
 .login-form > input[type="submit"] {
   padding: 12px 10px;
   border: 0;
-  background: linear-gradient(to right, #52be80 0%, #229954 100%); 
+  background: linear-gradient(to right, #ff4242 0%, #ca2301 100%); 
   border-radius: 3px;
   margin-top: 10px;
   color: #fff;
@@ -191,7 +207,7 @@ body {
 }
 
 .login-form > input[type="submit"]:hover {
-	background: linear-gradient(to right, #229954 0%, #52be80 100%);
+	background: linear-gradient(to right, #ca2301 0%, #ff4242 100%);
 	cursor: pointer;
 }
 
