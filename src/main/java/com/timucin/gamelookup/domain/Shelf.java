@@ -2,7 +2,6 @@ package com.timucin.gamelookup.domain;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,11 +22,15 @@ public class Shelf {
 	
 	private String name;
 	
-	@ManyToMany(cascade = CascadeType.MERGE)
+	@ManyToMany
 	@JoinTable(name = "shelf_games",
 		joinColumns = @JoinColumn(name = "shelf_id"),
 		inverseJoinColumns = @JoinColumn(name = "game_id"))
 	private Set<Game> games;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User shelfOwner;
 
 	public Long getId() {
 		return id;
@@ -50,6 +54,14 @@ public class Shelf {
 
 	public void setGames(Set<Game> games) {
 		this.games = games;
+	}
+	
+	public User getShelfOwner() {
+		return shelfOwner;
+	}
+	
+	public void setShelfOwner(User owner) {
+		shelfOwner = owner;
 	}
 
 	@Override

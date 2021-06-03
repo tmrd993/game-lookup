@@ -1,10 +1,15 @@
 package com.timucin.gamelookup.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -16,10 +21,12 @@ public class User {
 	@Column(unique = true)
 	private String username;
 	
-	// TODO: this should be a hash, not plaintext
 	private String password;
 	
 	private String email;
+	
+	@OneToMany(mappedBy = "shelfOwner", cascade = CascadeType.MERGE)
+	private List<Shelf> shelves = new ArrayList<>();
 	
 	public User(String username, String password, String email) {
 		this.username = username;
@@ -59,6 +66,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public List<Shelf> getShelves() {
+		return shelves;
+	}
+	
+	public void setShelves(List<Shelf> shelves) {
+		this.shelves = shelves;
 	}
 	
 	@Override

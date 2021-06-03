@@ -10,6 +10,8 @@ import com.timucin.gamelookup.domain.User;
 
 public class AuthenticatedUser extends User implements UserDetails {
 
+	private static final long serialVersionUID = 209706356119253245L;
+
 	protected AuthenticatedUser(User user) {
 		super(user.getUsername(), user.getPassword(), user.getEmail());
 	}

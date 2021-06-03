@@ -29,7 +29,7 @@ public class Game {
 	
 	private String name;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH})
 	@JoinTable(name = "game_genre",
 		joinColumns = @JoinColumn(name = "game_id"),
 		inverseJoinColumns = @JoinColumn(name = "genre_id"))
