@@ -4,7 +4,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Success</title>
+  <title>My Lists</title>
   <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 
@@ -21,14 +21,11 @@
   	    <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
           <input hidden="true" type="submit" value="Sign Out"/>
         </form> 
-  	  </div>
-  	  <div th:unless="${currentUser != null}">
-  	    <a href="login">Log in</a>
   	  </div> 
 	</div > <!-- topnav-right -->
   </div> <!-- topnav -->
   
-  <p>Registration successful. You can now log in using your credentials.</p>
+  <p>This is where the lists get managed</p>
 
   <div class="footer">
     <a href="contact">Contact</a>

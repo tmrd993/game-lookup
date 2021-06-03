@@ -12,7 +12,8 @@
   <h1 class="header">Game Lookup</h1>
   <div class="topnav">
     <a href="/home">Home</a>
-    <a class="active" href="/web_search">Search</a>
+    <a class="active" href="/web_search">Web Search</a>
+    <a href="/my_lists">My Lists</a>
   	<div class="topnav-right" th:with="currentUser=${#httpServletRequest.userPrincipal?.name}">
   	   <div th:if="${currentUser != null}">
   	    <span th:text="${'Logged in as: ' + currentUser}"></span>
