@@ -3,6 +3,8 @@ package com.timucin.gamelookup.dto;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import com.timucin.gamelookup.validation.PasswordsMatch;
 import com.timucin.gamelookup.validation.UniqueEmail;
@@ -13,11 +15,15 @@ public class UserDto {
 	
 	@NotNull
 	@NotEmpty
+	@Size(min = 3, max = 20)
+	@Pattern(regexp = "[a-zA-Z0-9]+",
+	  message = "only alphanumeric characters are allowed (a-z, A-Z, 0-9). please choose a different username")
 	@UniqueUser
 	private String username;
 	
 	@NotNull
 	@NotEmpty
+	@Size(min = 5, max = 30)
 	private String password;
 	private String matchingPassword;
 	

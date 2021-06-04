@@ -22,6 +22,8 @@ public class Shelf {
 	
 	private String name;
 	
+	private String description = "";
+	
 	@ManyToMany
 	@JoinTable(name = "shelf_games",
 		joinColumns = @JoinColumn(name = "shelf_id"),
@@ -46,6 +48,14 @@ public class Shelf {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Set<Game> getGames() {

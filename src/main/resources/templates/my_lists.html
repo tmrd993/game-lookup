@@ -44,6 +44,17 @@
     <div class="inner-popup">
       <h2>Create a New Game List</h2>
       <a class="close" href="#">&times;</a>
+      <form method="post" th:action="@{/my_lists}" name="createListForm" th:object="${shelfDto}">
+        <label for="name"></label>
+        <input type="text" placeholder="Name..." name="name" id="name" th:field="*{name}"/>
+        <span style="color: red;" th:if="${#fields.hasErrors('name')}" th:errorclass="error" th:errors="*{name}"></span>
+        
+        <label for="description"></label>
+        <textarea name="description" th:field="*{description}">Description...</textarea>
+        <span style="color: red;" th:if="${#fields.hasErrors('description')}" th:errorclass="error" th:errors="*{description}"></span>
+        
+        <button type="submit" class="list-create-confirm-button">Create</button>
+      </form>
     </div>  
   </div>
 
