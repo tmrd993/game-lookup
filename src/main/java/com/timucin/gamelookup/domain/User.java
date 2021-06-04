@@ -28,10 +28,12 @@ public class User {
 	@OneToMany(mappedBy = "shelfOwner", cascade = CascadeType.MERGE)
 	private List<Shelf> shelves = new ArrayList<>();
 	
-	public User(String username, String password, String email) {
+	public User(Long id, String username, String password, String email, List<Shelf> shelves) {
+		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.email = email;
+		this.shelves = shelves;
 	}
 	
 	public User() {}

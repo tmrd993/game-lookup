@@ -25,7 +25,27 @@
 	</div > <!-- topnav-right -->
   </div> <!-- topnav -->
   
-  <p>This is where the lists get managed</p>
+  <div class="empty-list-info" th:if="${#lists.isEmpty(shelves)}"> 
+    <p>It's empty here...</p>
+    <p>Try creating some lists:</p>
+  </div>
+  
+  <div th:unless="${#lists.isEmpty(shelves)}">
+    
+    
+  
+  </div>
+  
+  <a class="new-list-button" href="#new-list-popup">
+    New List
+  </a>
+  
+  <div id="new-list-popup" class="overlay">
+    <div class="inner-popup">
+      <h2>Create a New Game List</h2>
+      <a class="close" href="#">&times;</a>
+    </div>  
+  </div>
 
   <div class="footer">
     <a href="contact">Contact</a>

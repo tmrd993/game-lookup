@@ -33,22 +33,22 @@
           <label for="username"></label>
           <input type="text" class="form-field   animation a3" id="username" 
             name="username" placeholder="Username" th:field="*{username}">
-            <span style="color: red;" th:if="${#fields.hasErrors('username')}" th:errorclass="error" th:errors="*{username}"></span>
+            <span style="color: #FFFF00;" th:if="${#fields.hasErrors('username')}" th:errorclass="error" th:errors="*{username}"></span>
             
           <label for="email"></label>
           <input type="text" class="form-field animation a3" id="email" 
             name="email" placeholder="Email" th:field="*{email}">
-            <span style="color: red;" th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}"></span>
+            <span style="color: #FFFF00;" th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}"></span>
           
           <label for="password"></label>
           <input type="password" class="form-field animation a4" id="password" 
             name="password" autocomplete="off" placeholder="Password" th:field="*{password}">
-            <span style="color: red;" th:if="${#fields.hasErrors('password')}" th:errorclass="error" th:errors="*{password}"></span>
+            <span style="color: #FFFF00;" th:if="${#fields.hasErrors('password')}" th:errorclass="error" th:errors="*{password}"></span>
             
           <label for="passwordConfirm"></label>
           <input type="password" class="form-field animation a4" id="passwordConfirm" 
             name="passwordConfirm" autocomplete="off" placeholder="Confirm password" th:field="*{matchingPassword}">
-            <span style="color: red;" th:if="${#fields.hasErrors('${userDto}')}" th:errors="${userDto}"></span>
+            <span style="color: #FFFF00;" th:if="${#fields.hasErrors('${userDto}')}" th:errors="${userDto}"></span>
           
           <input type="submit" class="animation a6" value="Sign up">
         </div>
