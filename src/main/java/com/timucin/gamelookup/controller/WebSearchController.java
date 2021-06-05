@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.timucin.gamelookup.domain.Game;
+import com.timucin.gamelookup.dto.ChosenWebSearchResultDto;
 import com.timucin.gamelookup.fetcher.GameDataFetcher;
 
 @Controller
@@ -25,18 +27,32 @@ public class WebSearchController {
 		this.gameDataFetcher = gameDataFetcher;
 	}
 	
-	@GetMapping("web_search/search")
-	public String results(Model model, @RequestParam(required = true, value = "query") String query) {
+	@GetMapping("/web_search")
+	public String results(Model model, @RequestParam(required = false, value = "query") String query) {
 		
-		logger.info("Search query: " + query);
+		if(query != null) {
+			logger.info("Search query: " + query);
 
-		List<Game> searchResults = gameDataFetcher.fetchAll(query);
+			List<Game> searchResults = gameDataFetcher.fetchAll(query);
 
-		logger.info("Found " + searchResults.size() + " results.");
+			logger.info("Found " + searchResults.size() + " results.");
 
-		model.addAttribute("searchResults", searchResults);
+			model.addAttribute("searchResults", searchResults);	
+		}
 		
-		return "search_results";
+		model.addAttribute("chosenWebSearchResultDto", new ChosenWebSearchResultDto());
+		
+		return "web_search";
 	}
+	
+	@PostMapping("/web_search")
+	public String addGameToShelf() {
+		
+		
+		
+		return "redirect:/web_search";
+	}
+	
+
 
 }
