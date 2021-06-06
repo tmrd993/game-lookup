@@ -9,7 +9,7 @@ public class ShelfDto {
 	
 	@NotNull
 	@NotEmpty
-	@Size(min = 3, max = 50)
+	@Size(min = 3, max = 20)
 	@Pattern(regexp = "[a-zA-Z0-9 ]+",
 			  message = "only alphanumeric characters and spaces are allowed (a-z, A-Z, 0-9). please choose a different name")
 	private String name;

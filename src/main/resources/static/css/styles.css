@@ -3,7 +3,7 @@ body {
 }
 
 html {
-  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='545' preserveAspectRatio='none' viewBox='0 0 1440 545'%3e%3cg mask='url(%26quot%3b%23SvgjsMask2046%26quot%3b)' fill='none'%3e%3crect width='1440' height='545' x='0' y='0' fill='url(%23SvgjsLinearGradient2047)'%3e%3c/rect%3e%3cpath d='M89.61 623.83C213.72 619.81 315.83 429.18 546.44 428.88 777.04 428.58 774.85 497.01 1003.26 497 1231.68 497.01 1344.62 429.07 1460.09 428.88' stroke='rgba(170%2c 185%2c 200%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M837.67 630.65C912.26 630.41 898.48 579.22 1130.8 575.1 1363.11 570.98 1558.25 334.73 1717.05 329.85' stroke='rgba(170%2c 185%2c 200%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M629.43 580.71C797.83 554.38 884.84 150.97 1157.03 148.88 1429.21 146.79 1546.55 310.52 1684.62 312.38' stroke='rgba(170%2c 185%2c 200%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M522.53 557.76C637.74 547.81 713.32 312.66 914.11 311.54 1114.89 310.42 1109.89 379.66 1305.68 379.66 1501.47 379.66 1597.9 311.79 1697.26 311.54' stroke='rgba(170%2c 185%2c 200%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M702.48 548.08C818.96 519.65 752.99 221.88 1037.88 205.26 1322.77 188.64 1533.97 11.06 1708.68 9.06' stroke='rgba(170%2c 185%2c 200%2c 1)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask2046'%3e%3crect width='1440' height='545' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='50%25' y1='100%25' x2='50%25' y2='0%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient2047'%3e%3cstop stop-color='%230e2a47' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(157%2c 173%2c 224%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e") no-repeat center center fixed;
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='529' preserveAspectRatio='none' viewBox='0 0 1440 529'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1266%26quot%3b)' fill='none'%3e%3crect width='1440' height='529' x='0' y='0' fill='url(%23SvgjsLinearGradient1267)'%3e%3c/rect%3e%3cpath d='M664.58 573.47C736.98 571.32 712.5 470.85 932.35 462.79 1152.2 454.73 1320.39 220.12 1467.88 214.16' stroke='rgba(255%2c 252%2c 252%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M577.16 601.87C735.98 588.65 842.66 267.35 1119.13 266.25 1395.6 265.15 1522.52 381.98 1661.1 382.63' stroke='rgba(255%2c 252%2c 252%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M517.53 625.42C615.08 619.31 583.95 444 859.98 436.75 1136 429.5 1365.28 222.43 1544.87 219.86' stroke='rgba(255%2c 252%2c 252%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M254.76 541.93C427.1 541.93 592.67 529.13 943.99 527.82 1295.3 526.51 1449.17 272.85 1633.21 268.61' stroke='rgba(255%2c 252%2c 252%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M784.35 612.02C866.78 606.2 831.31 457.88 1070.45 446.47 1309.59 435.06 1485.72 193.21 1642.65 187.26' stroke='rgba(255%2c 252%2c 252%2c 1)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1266'%3e%3crect width='1440' height='529' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='50%25' y1='0%25' x2='50%25' y2='100%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1267'%3e%3cstop stop-color='rgba(0%2c 21%2c 86%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(157%2c 173%2c 224%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -224,7 +224,7 @@ html {
   font-family: Calibri, sans-serif;
 }
 
-.login-form > input[type="submit"]:hover, .new-list-button:hover, .list-create-confirm-button:hover {
+.login-form > input[type="submit"]:hover, .new-list-button:hover, .list-create-confirm-button:hover, .add-to-list-button:hover {
 	background: linear-gradient(to right, #ca2301 0%, #ff4242 100%);
 	cursor: pointer;
 }
@@ -376,7 +376,7 @@ html {
   box-sizing: border-box;
 }
 
-.list-create-confirm-button {
+.list-create-confirm-button, .add-to-list-button {
   padding: 12px 10px;
   border: 0;
   background: linear-gradient(to right, #ff4242 0%, #ca2301 100%); 

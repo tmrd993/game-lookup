@@ -25,7 +25,7 @@
 	</div > <!-- topnav-right -->
   </div> <!-- topnav -->
   
-  <div class="empty-list-info" th:if="${#lists.isEmpty(shelves)}"> 
+  <div class="empty-list-info" th:if="${#lists.isEmpty(shelves)}" style="color:white;"> 
     <p>It's empty here...</p>
     <p>Try creating some lists:</p>
   </div>
@@ -47,8 +47,7 @@
       <form method="post" th:action="@{/my_lists}" name="createListForm" th:object="${shelfDto}">
         <label for="name">Name</label>
         <input type="text" placeholder="Name..." name="name" id="name" th:field="*{name}"/>
-        <span style="color: red;" th:if="${#fields.hasErrors('name')}" th:errorclass="error" th:errors="*{name}"></span>
-        
+        <p style="color: red;" th:if="${#fields.hasErrors('name')}" th:errorclass="error" th:errors="*{name}"></p>
         <label for="description">Description</label>
         <textarea name="description" th:field="*{description}">Description...</textarea>
         <span style="color: red;" th:if="${#fields.hasErrors('description')}" th:errorclass="error" th:errors="*{description}"></span>

@@ -1,36 +1,31 @@
 package com.timucin.gamelookup.dto;
 
-import java.util.List;
-
-import javax.validation.constraints.NotNull;
-
-import com.timucin.gamelookup.domain.Game;
-
 public class ChosenWebSearchResultDto {
 	
-	private List<Game> allResults;
+	private String chosenGameName;
 	
-	@NotNull
-	private Game chosenGame;
+	private long chosenShelfId;
 	
-	public ChosenWebSearchResultDto(List<Game> allResults, Game chosenGame) {
-		this.allResults = allResults;
-		this.chosenGame = chosenGame;
+	public ChosenWebSearchResultDto(String chosenGameName, long chosenShelfId) {
+		this.chosenGameName = chosenGameName;
+		this.chosenShelfId = chosenShelfId;
 	}
 	
 	public ChosenWebSearchResultDto() {}
 	
-	public List<Game> getAllResults() {
-		return allResults;
+	public String getChosenGameName() {
+		return chosenGameName;
 	}
-	public void setAllResults(List<Game> allResults) {
-		this.allResults = allResults;
+	public void setChosenGameName(String chosenGameName) {
+		this.chosenGameName = chosenGameName;
 	}
-	public Game getChosenGame() {
-		return chosenGame;
+
+	public long getChosenShelfId() {
+		return chosenShelfId;
 	}
-	public void setChosenGame(Game chosenGame) {
-		this.chosenGame = chosenGame;
+
+	public void setChosenShelfId(long chosenShelfId) {
+		this.chosenShelfId = chosenShelfId;
 	}
 	
 	
