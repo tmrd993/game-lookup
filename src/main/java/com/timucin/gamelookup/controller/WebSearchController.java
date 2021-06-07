@@ -84,6 +84,10 @@ public class WebSearchController {
 			RedirectAttributes attr,
 			Model model) {
 		
+		logger.info("CHOSEN SHELF: " + chosenWebSearchResultDto.getChosenShelfId());
+		logger.info("BOUND FIELD VALUE: " + bindingResult.getFieldValue("chosenShelfId"));
+	
+		
 		addToShelf(searchResults, chosenWebSearchResultDto);
 		
 		sessionStatus.setComplete();

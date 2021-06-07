@@ -32,7 +32,15 @@
   
   <div th:unless="${#lists.isEmpty(shelves)}">
     
-    
+    <div th:each="shelf, itemStat : ${shelves}">
+      <div class="roundcard" style="height:110px; margin-bottom: 13px;">
+        <div class="shelf-data">
+          <p th:text="${'Name: ' + shelf.name}"></p>
+          <p th:text="${'Description: ' + shelf.description}"></p>
+          <p th:text="${'Number of Games in this List: ' + shelf.games.size}"></p>
+        </div>
+      </div>
+    </div>
     
   
   </div>

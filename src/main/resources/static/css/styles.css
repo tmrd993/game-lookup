@@ -116,7 +116,7 @@ html {
 	opacity: 1;
 }
 
-.gamedata {
+.gamedata, .shelf-data {
   margin-top:3px;
   margin-bottom:3px;
   margin-left:3px;

@@ -11,6 +11,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.web.util.UriUtils;
 
 @Entity
 @Table(name = "shelf")
@@ -23,6 +26,9 @@ public class Shelf {
 	private String name;
 	
 	private String description = "";
+	
+	@Transient
+	private String encodedName;
 	
 	@ManyToMany
 	@JoinTable(name = "shelf_games",
@@ -72,6 +78,10 @@ public class Shelf {
 	
 	public void setShelfOwner(User owner) {
 		shelfOwner = owner;
+	}
+	
+	public String getEncodedName() {
+		return UriUtils.encode(name, "UTF-8");
 	}
 
 	@Override
