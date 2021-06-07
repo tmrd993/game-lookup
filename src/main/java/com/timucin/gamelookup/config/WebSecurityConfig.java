@@ -36,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 				.antMatchers("/home", "/home.html", "/", "/sign_up", "/register_success",
 						"/contact", "/about","/css/**").permitAll()
-				.antMatchers("/my_lists/{username}/**").access("@userAccessChecker.checkAccess(authentication, #username)")
+				.antMatchers("/{username}/my_lists/**").access("@userAccessChecker.checkAccess(authentication, #username)")
 				.anyRequest().authenticated()
 				.and().formLogin().loginPage("/login").permitAll()
 				.and().logout().permitAll();

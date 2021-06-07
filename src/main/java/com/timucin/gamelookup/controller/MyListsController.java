@@ -32,7 +32,7 @@ public class MyListsController {
 		this.userService = userService;
 	}
 	
-	@GetMapping("/my_lists/{username}")
+	@GetMapping("/{username}/my_lists")
 	public String myLists(@AuthenticationPrincipal User user, Model model) {
 		
 		// this is guaranteed to find the user since the endpoint can't be reached without being logged in
@@ -49,7 +49,7 @@ public class MyListsController {
 		return "my_lists";
 	}
 	
-	@PostMapping("/my_lists/{username}")
+	@PostMapping("/{username}/my_lists")
 	public String createList(@AuthenticationPrincipal User user,
 			@PathVariable String username,
 			@ModelAttribute("shelfDto") @Valid ShelfDto shelfDto,
@@ -60,7 +60,7 @@ public class MyListsController {
 		if(bindingResult.hasErrors()) {
 			attr.addFlashAttribute("org.springframework.validation.BindingResult.shelfDto", bindingResult);
 			attr.addFlashAttribute("shelfDto", shelfDto);
-			return "redirect:/my_lists/" + username + "#new-list-popup";
+			return "redirect:/" + username + "/my_lists#new-list-popup";
 		}
 		
 		User currentUser = userService.findById(user.getId()).get();
@@ -72,7 +72,7 @@ public class MyListsController {
 		currentUser.getShelves().add(shelf);
 		userService.save(currentUser);
 		
-		return "redirect:/my_lists/" + username;
+		return "redirect:/" + username + "/my_lists";
 	}
 
 }

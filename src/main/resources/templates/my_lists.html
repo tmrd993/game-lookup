@@ -13,7 +13,7 @@
   <div class="topnav" th:with="currentUser=${#httpServletRequest.userPrincipal?.name}">
     <a href="/home">Home</a>
     <a href="/web_search">Web Search</a>
-    <a th:href="@{/my_lists/{username}(username=${currentUser})}">My Lists</a>
+    <a th:href="@{/{username}/my_lists(username=${currentUser})}">My Lists</a>
   	<div class="topnav-right" th:with="currentUser=${#httpServletRequest.userPrincipal?.name}">
   	  <div th:if="${currentUser != null}">
   	    <span th:text="${'Logged in as: ' + currentUser}"></span>
@@ -33,6 +33,7 @@
   <div th:unless="${#lists.isEmpty(shelves)}">
     
     
+    
   
   </div>
   
@@ -44,7 +45,7 @@
     <div class="inner-popup">
       <h2>Create a New Game List</h2>
       <a class="close" href="#">&times;</a>
-      <form method="post" th:action="@{/my_lists/{username}(username=${currentUser})}" name="createListForm" th:object="${shelfDto}">
+      <form method="post" th:action="@{/{username}/my_lists(username=${currentUser})}" name="createListForm" th:object="${shelfDto}">
         <label for="name">Name</label>
         <input type="text" placeholder="Name..." name="name" id="name" th:field="*{name}"/>
         <p style="color: red;" th:if="${#fields.hasErrors('name')}" th:errorclass="error" th:errors="*{name}"></p>

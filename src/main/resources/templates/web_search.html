@@ -23,7 +23,7 @@
   <div class="topnav" th:with="currentUser=${#httpServletRequest.userPrincipal?.name}">
     <a href="/home">Home</a>
     <a class="active" href="/web_search">Web Search</a>
-    <a th:href="@{/my_lists/{username}(username=${currentUser})}">My Lists</a>
+    <a th:href="@{/{username}/my_lists(username=${currentUser})}">My Lists</a>
   	<div class="topnav-right" th:with="currentUser=${#httpServletRequest.userPrincipal?.name}">
   	   <div th:if="${currentUser != null}">
   	    <span th:text="${'Logged in as: ' + currentUser}"></span>
