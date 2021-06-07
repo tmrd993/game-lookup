@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -31,7 +32,7 @@ public class MyListsController {
 		this.userService = userService;
 	}
 	
-	@GetMapping("/my_lists")
+	@GetMapping("/my_lists/{username}")
 	public String myLists(@AuthenticationPrincipal User user, Model model) {
 		
 		// this is guaranteed to find the user since the endpoint can't be reached without being logged in
@@ -48,8 +49,9 @@ public class MyListsController {
 		return "my_lists";
 	}
 	
-	@PostMapping("/my_lists")
+	@PostMapping("/my_lists/{username}")
 	public String createList(@AuthenticationPrincipal User user,
+			@PathVariable String username,
 			@ModelAttribute("shelfDto") @Valid ShelfDto shelfDto,
 			BindingResult bindingResult,
 			RedirectAttributes attr,
@@ -58,7 +60,7 @@ public class MyListsController {
 		if(bindingResult.hasErrors()) {
 			attr.addFlashAttribute("org.springframework.validation.BindingResult.shelfDto", bindingResult);
 			attr.addFlashAttribute("shelfDto", shelfDto);
-			return "redirect:/my_lists#new-list-popup";
+			return "redirect:/my_lists/" + username + "#new-list-popup";
 		}
 		
 		User currentUser = userService.findById(user.getId()).get();
@@ -70,7 +72,7 @@ public class MyListsController {
 		currentUser.getShelves().add(shelf);
 		userService.save(currentUser);
 		
-		return "redirect:my_lists";
+		return "redirect:/my_lists/" + username;
 	}
 
 }

@@ -22,6 +22,16 @@ public class HomeController {
 		}
 		return "login";
 	}
+	
+	@GetMapping("/about")
+	public String about() {
+		return "about";
+	}
+	
+	@GetMapping("/contact")
+	public String contact() {
+		return "contact";
+	}
 
 	private boolean isAuthenticated() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
