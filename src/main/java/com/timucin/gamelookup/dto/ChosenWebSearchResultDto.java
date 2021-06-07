@@ -2,22 +2,22 @@ package com.timucin.gamelookup.dto;
 
 public class ChosenWebSearchResultDto {
 	
-	private String chosenGameName;
+	private int chosenGameIndex;
 	
 	private long chosenShelfId;
 	
-	public ChosenWebSearchResultDto(String chosenGameName, long chosenShelfId) {
-		this.chosenGameName = chosenGameName;
+	public ChosenWebSearchResultDto(int chosenGameIndex, long chosenShelfId) {
+		this.chosenGameIndex = chosenGameIndex;
 		this.chosenShelfId = chosenShelfId;
 	}
 	
 	public ChosenWebSearchResultDto() {}
 	
-	public String getChosenGameName() {
-		return chosenGameName;
+	public int getChosenGameIndex() {
+		return chosenGameIndex;
 	}
-	public void setChosenGameName(String chosenGameName) {
-		this.chosenGameName = chosenGameName;
+	public void setChosenGameIndex(int chosenGameIndex) {
+		this.chosenGameIndex = chosenGameIndex;
 	}
 
 	public long getChosenShelfId() {

@@ -22,7 +22,7 @@ public class GameDeserializer extends JsonDeserializer<Game> {
 		JsonNode root = p.readValueAsTree();
 		String name = root.get("name").asText();
 		
-		LocalDate releaseDate = LocalDate.MAX;
+		LocalDate releaseDate = null;
 		if(!root.get("released").isNull()) {
 			String releaseDateStr = root.get("released").asText();
 			releaseDate = LocalDate.of(Integer.parseInt(releaseDateStr.substring(0, 4)),

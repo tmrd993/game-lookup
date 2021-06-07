@@ -11,7 +11,7 @@
   <script type="text/javascript">
     $(document).ready(function(){
       $("button[type=submit]").click(function(){
-        $("#chosenGameName").val($(this).val());
+        $("#chosenGameIndex").val($(this).val());
           return true;
        });
     });
@@ -46,7 +46,7 @@
   
   <form class="web-search-form" th:if="${searchResults != null}" th:action="@{/web_search}" 
     name="searchResultForm" method="post" th:object="${chosenWebSearchResultDto}">
-    <input type=text style="display:none;" id="chosenGameName" name="chosenGameName" th:field=*{chosenGameName} value="xxx">
+    <input type=text style="display:none;" id="chosenGameIndex" name="chosenGameIndex" th:field=*{chosenGameIndex} value="0">
     <div th:each="game, itemStat : ${searchResults}">
       <div class="roundcard">
         <div class="gamedata">

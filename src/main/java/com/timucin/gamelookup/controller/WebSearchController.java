@@ -1,6 +1,7 @@
 package com.timucin.gamelookup.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -20,9 +21,14 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.timucin.gamelookup.domain.Game;
+import com.timucin.gamelookup.domain.Genre;
+import com.timucin.gamelookup.domain.Shelf;
 import com.timucin.gamelookup.domain.User;
 import com.timucin.gamelookup.dto.ChosenWebSearchResultDto;
 import com.timucin.gamelookup.fetcher.GameDataFetcher;
+import com.timucin.gamelookup.service.GameService;
+import com.timucin.gamelookup.service.GenreService;
+import com.timucin.gamelookup.service.ShelfService;
 import com.timucin.gamelookup.service.UserService;
 
 @Controller
@@ -33,11 +39,17 @@ public class WebSearchController {
 	
 	private final GameDataFetcher gameDataFetcher;
 	private final UserService userService;
+	private final ShelfService shelfService;
+	private final GameService gameService;
+	private final GenreService genreService;
 
 	@Autowired
-	public WebSearchController(GameDataFetcher gameDataFetcher, UserService userService) {
+	public WebSearchController(GameDataFetcher gameDataFetcher, UserService userService, ShelfService shelfService, GameService gameService, GenreService genreService) {
 		this.gameDataFetcher = gameDataFetcher;
 		this.userService = userService;
+		this.shelfService = shelfService;
+		this.gameService = gameService;
+		this.genreService = genreService;
 	}
 	
 	@GetMapping("/web_search")
@@ -72,20 +84,42 @@ public class WebSearchController {
 			RedirectAttributes attr,
 			Model model) {
 		
-		logger.info("CHOSEN SHELF: " + chosenWebSearchResultDto.getChosenShelfId());
-		logger.info("CHOSEN GAME: " + chosenWebSearchResultDto.getChosenGameName());
-		
-		for(Game game : searchResults) {
-			logger.info(game.getName());
-		}
+		addToShelf(searchResults, chosenWebSearchResultDto);
 		
 		sessionStatus.setComplete();
-		
-		// TODO: add the chosen game to the chosen shelf
 		
 		attr.addFlashAttribute("searchResults", searchResults);
 		
 		return "redirect:/web_search";
+	}
+	
+	private void addToShelf(List<Game> searchResults, ChosenWebSearchResultDto chosenWebSearchResultDto) {
+		Game chosenGame = searchResults.get(chosenWebSearchResultDto.getChosenGameIndex() - 1);
+		Shelf chosenShelf = shelfService.findById(chosenWebSearchResultDto.getChosenShelfId()).get();
+		
+		Optional<Game> potentialDuplicateGame = gameService.findByName(chosenGame.getName());
+		
+		if(chosenShelf.getGames().contains(chosenGame)) {
+			return;
+		}
+		
+		if(potentialDuplicateGame.isPresent()) {
+			chosenShelf.getGames().add(potentialDuplicateGame.get());
+		} else {
+			
+			for(Genre genre : chosenGame.getGenres()) {
+				Optional<Genre> potentialDuplicateGenre = genreService.findByName(genre.getName());
+				if(potentialDuplicateGenre.isPresent()) {
+					genre.setId(potentialDuplicateGenre.get().getId());
+				}
+				genreService.save(genre);
+			}
+			
+			gameService.save(chosenGame);
+			chosenShelf.getGames().add(chosenGame);
+		}
+		
+		shelfService.save(chosenShelf);
 	}
 	
 

@@ -71,6 +71,11 @@ public class DataLoader implements CommandLineRunner {
 		Genre rpg = new Genre();
 		rpg.setName("RPG");
 		
+		genreService.save(rpg);
+		genreService.save(adventure);
+		genreService.save(shooter);
+		genreService.save(action);
+		
 		Game gameOne = new Game();
 		gameOne.setName("Halo: Combat Evolved");
 		gameOne.setCoverImageUrl("");
