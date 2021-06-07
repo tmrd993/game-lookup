@@ -4,7 +4,8 @@ Full stack web application using Spring Boot to manage video game collections wi
 # How-To
 1. Clone the repo
 2. Start MySQL 8
-3. Enter your rawg.io API key and MySQL user credentials into the application.properties file
+3. Enter your rawg.io API key and MySQL user credentials into the application.properties file  
+(This is needed for the web search feature, you can get an API key from here https://rawg.io/apidocs)
 4. Import the project to your IDE as a maven project
 5. Run the GameLookupApplication class
 6. Open up your browser and navigate to localhost:8080
