@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
@@ -44,7 +44,7 @@
     
     <div th:each="shelf, itemStat : ${shelves}">
       <div class="roundcard roundcard-list">
-        <a th:href='@{/{username}/my_lists/{shelfName}(username=${currentUser},shelfName=${shelf.name})}' style="display: none"></a>
+        <a th:href='@{/{username}/my_lists/{shelfId}(username=${currentUser},shelfId=${shelf.id})}' style="display: none"></a>
         <div class="shelf-data">
           <p th:text="${'Name: ' + shelf.name}"></p>
           <p th:text="${'Description: ' + shelf.description}"></p>

@@ -1,6 +1,7 @@
 package com.timucin.gamelookup;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -55,7 +56,7 @@ public class DataLoader implements CommandLineRunner {
 		predefinedUser.setPassword(passwordEncoder.encode("password"));
 		
 		Shelf predefinedCollection = new Shelf();
-		predefinedCollection.setGames(new HashSet<>());
+		predefinedCollection.setGames(new ArrayList<>());
 		predefinedCollection.setName("Predefined Collection");
 		predefinedCollection.setShelfOwner(predefinedUser);
 		

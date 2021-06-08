@@ -1,6 +1,6 @@
 package com.timucin.gamelookup.domain;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,7 +34,7 @@ public class Shelf {
 	@JoinTable(name = "shelf_games",
 		joinColumns = @JoinColumn(name = "shelf_id"),
 		inverseJoinColumns = @JoinColumn(name = "game_id"))
-	private Set<Game> games;
+	private List<Game> games;
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
@@ -64,11 +64,11 @@ public class Shelf {
 		this.description = description;
 	}
 
-	public Set<Game> getGames() {
+	public List<Game> getGames() {
 		return games;
 	}
 
-	public void setGames(Set<Game> games) {
+	public void setGames(List<Game> games) {
 		this.games = games;
 	}
 	
@@ -81,7 +81,7 @@ public class Shelf {
 	}
 	
 	public String getEncodedName() {
-		return UriUtils.encode(name, "UTF-8");
+		return UriUtils.encodePathSegment(name, "UTF-8");
 	}
 
 	@Override

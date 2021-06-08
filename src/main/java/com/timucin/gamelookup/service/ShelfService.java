@@ -12,35 +12,35 @@ import com.timucin.gamelookup.repository.ShelfRepository;
 @Service
 public class ShelfService {
 	
-	private final ShelfRepository gameCollectionRepository;
+	private final ShelfRepository shelfRepository;
 	
 	@Autowired
-	public ShelfService(ShelfRepository gameCollectionRepository) {
-		this.gameCollectionRepository = gameCollectionRepository;
+	public ShelfService(ShelfRepository shelfRepository) {
+		this.shelfRepository = shelfRepository;
 	}
 	
 	public List<Shelf> findAll() {
-		return gameCollectionRepository.findAll();
+		return shelfRepository.findAll();
 	}
 	
 	public Optional<Shelf> findById(Long id) {
-		return gameCollectionRepository.findById(id);
+		return shelfRepository.findById(id);
 	}
 	
-	public Shelf save(Shelf gameCollection) {
-		return gameCollectionRepository.save(gameCollection);
+	public Shelf save(Shelf shelf) {
+		return shelfRepository.save(shelf);
 	}
 	
-	public void delete(Shelf gameCollection) {
-		gameCollectionRepository.delete(gameCollection);
+	public void delete(Shelf shelf) {
+		shelfRepository.delete(shelf);
 	}
 	
 	public void deleteById(Long id) {
-		gameCollectionRepository.deleteById(id);
+		shelfRepository.deleteById(id);
 	}
 	
 	public Optional<Shelf> findByName(String name) {
-		return gameCollectionRepository.findByName(name);
+		return shelfRepository.findByName(name);
 	}
 
 
