@@ -38,7 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 						"/contact", "/about","/css/**").permitAll()
 				.antMatchers("/{username}/my_lists/**").access("@userAccessChecker.checkAccess(authentication, #username)")
 				.anyRequest().authenticated()
-				.and().formLogin().loginPage("/login").permitAll()
+				.and().formLogin().loginPage("/login").defaultSuccessUrl("/home").permitAll()
 				.and().logout().permitAll();
 	}
 

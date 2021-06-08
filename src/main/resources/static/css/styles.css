@@ -103,6 +103,15 @@ html {
   position: relative;
 }
 
+.roundcard-list {
+	height: 110px;
+	margin-bottom: 13px;
+}
+
+.roundcard-list:hover {
+	cursor: pointer;
+}
+
 .roundcard-modal-button {
   position: absolute;
   right: 20px;
