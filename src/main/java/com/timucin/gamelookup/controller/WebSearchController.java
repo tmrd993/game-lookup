@@ -70,7 +70,10 @@ public class WebSearchController {
 		User currentUser = userService.findById(user.getId()).get();
 		
 		model.addAttribute("userShelves", currentUser.getShelves());
-		model.addAttribute("chosenWebSearchResultDto", new ChosenWebSearchResultDto());
+		
+		if(!model.containsAttribute("chosenWebSearchResultDto")) {
+			model.addAttribute("chosenWebSearchResultDto", new ChosenWebSearchResultDto());
+		}
 		
 		return "web_search";
 	}
@@ -84,10 +87,15 @@ public class WebSearchController {
 			RedirectAttributes attr,
 			Model model) {
 		
+		if(bindingResult.hasErrors()) {
+			attr.addFlashAttribute("org.springframework.validation.BindingResult.chosenWebSearchResultDto", bindingResult);
+			attr.addFlashAttribute("chosenWebSearchResultDto", chosenWebSearchResultDto);
+			return "redirect:/web_search/#add-to-list-modal" + chosenWebSearchResultDto.getChosenGameIndex();
+		}
+		
 		logger.info("CHOSEN SHELF: " + chosenWebSearchResultDto.getChosenShelfId());
 		logger.info("BOUND FIELD VALUE: " + bindingResult.getFieldValue("chosenShelfId"));
 	
-		
 		addToShelf(searchResults, chosenWebSearchResultDto);
 		
 		sessionStatus.setComplete();
