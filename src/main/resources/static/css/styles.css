@@ -397,4 +397,32 @@ html {
   width: 20%;
 }
 
+.game-list-table, .page-numbers{
+  margin-left: 25px;
+  margin-top: 30px;
+  margin-right:25px;
+}
+
+.game-list-table td, th {
+  border: 1px solid grey;
+  background-color: white;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.pagination-div {
+  user-select: none;
+}
+
+.pagination-div span {
+  border-radius:3px;
+  border:1px solid #999;
+  padding:5px;margin:10px 0px 0px 10px;
+  display:inline-block;
+  background-color: white;
+}
+
+.pagination-div span.selected {
+  background:#ccf;
+}
 

@@ -93,14 +93,12 @@ public class MyListsController {
 	@GetMapping("/{username}/my_lists/{shelfId}")
 	public String showDetailedList(@AuthenticationPrincipal User user,
 			Model model,
-			@RequestParam("page") Optional<Integer> page,
-			@RequestParam("size") Optional<Integer> size,
+			@RequestParam(defaultValue = "0") Integer page,
+			@RequestParam(defaultValue = "10") Integer size,
 			@PathVariable String username,
 			@PathVariable Long shelfId
 			) {
 		
-		int currentPage = page.orElse(1);
-		int pageSize = size.orElse(10);
 		
 		User currentUser = userService.findByUsername(user.getUsername());
 		
@@ -115,7 +113,7 @@ public class MyListsController {
 		
 		Shelf targetShelf = possibleShelf.get();
 		
-		Page<Game> gamePage = gameService.findPaginatedGamesFromShelf(targetShelf, PageRequest.of(currentPage - 1, pageSize));
+		Page<Game> gamePage = gameService.findAll(PageRequest.of(page, size));
 		
 		model.addAttribute("gamePage", gamePage);
 		
@@ -126,6 +124,8 @@ public class MyListsController {
 					.collect(Collectors.toList());
 			model.addAttribute("pageNumbers", pageNumbers);
 		}
+		
+		logger.info("pages: " + totalPages);
 		
 		model.addAttribute("shelf", targetShelf);
 		
