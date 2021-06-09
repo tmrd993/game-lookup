@@ -22,6 +22,22 @@
         }
       });
   });
+  $(document).ready(function(){
+    $(".delete-entry-button").click(function(){
+      $('th[data-name="checkbox-col"], td[data-name="checkbox-col"]').removeClass("element-hidden");
+      $(".cancel-delete-entry-button").removeClass("element-hidden");
+      $(".confirm-deletion-button").removeClass("element-hidden");
+      $(".delete-entry-button").addClass("element-hidden");
+    });
+  });
+  $(document).ready(function(){
+    $(".cancel-delete-entry-button").click(function(){
+      $('th[data-name="checkbox-col"], td[data-name="checkbox-col"]').addClass("element-hidden");
+      $(".cancel-delete-entry-button").addClass("element-hidden");
+      $(".confirm-deletion-button").addClass("element-hidden");
+      $(".delete-entry-button").removeClass("element-hidden");
+    });
+  });
 </script>
 
 
@@ -44,48 +60,58 @@
   
   <h2 class="empty-list-notice" th:if="${gamePage.getTotalElements == 0}">This list is empty. Try adding some games to it using the web search feature.</h2>
   
-  <table th:unless="${gamePage.getTotalElements == 0}" class="game-list-table" border="1">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Genres</th>
-        <th>Platforms</th>
-        <th>Release Date</th>
-        <th>Metacritic Score</th>
-        <th>ESRB Rating</th>
-        <th><input type="checkbox" id="check-all"/></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr th:each="game, itemStat : ${gamePage.content}"
-          th:alt-title="${itemStat.even}? 'even' : 'odd'">
-          <td th:text="${game.id}" />
-          <td th:text="${game.name}" />
-          <td th:text="${game.genres}" />
-          <td th:text="${game.platforms}" />
-          <td th:text="${game.releaseDate}" />
-          <td th:text="${game.metacriticScore}" />
-          <td th:text="${game.esrbRating}" />
-          <td><input type="checkbox" th:id="${'box' + game.id}"/></td>
+  <form th:unless="${gamePage.getTotalElements == 0}" method="post" th:action='@{/{username}/my_lists/{shelfId}(username=${currentUser},shelfId=${shelf.id})}' th:object="${chosenDeletionEntriesDto}">
+    <div class="table-div">
+    <table th:unless="${gamePage.getTotalElements == 0}" class="game-list-table" border="1">
+      <thead>
+        <tr>
+          <th data-name="checkbox-col" class="element-hidden"><input type="checkbox" id="check-all"/></th>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Genres</th>
+          <th>Platforms</th>
+          <th>Release Date</th>
+          <th>Metacritic Score</th>
+          <th>ESRB Rating</th>
         </tr>
-    </tbody>
+      </thead>
+      <tbody>
+        <tr th:each="game, itemStat : ${gamePage.content}"
+            th:alt-title="${itemStat.even}? 'even' : 'odd'">
+            <td data-name="checkbox-col" class="element-hidden"><input type="checkbox" th:id="${'box' + game.id}" th:field="*{chosenGames[__${itemStat.index}__].id}" th:value="${game.id}"/></td>
+            <td th:text="${game.id}" />
+            <td th:text="${game.name}" />
+            <td th:text="${game.genres}" />
+            <td th:text="${game.platforms}" />
+            <td th:text="${game.releaseDate}" />
+            <td th:text="${game.metacriticScore}" />
+            <td th:text="${game.esrbRating}" />
+          </tr>
+      </tbody>
   
-  </table>
-  <div th:unless="${gamePage.getTotalElements == 0}" class="pagination-div page-numbers">
-    <span th:if="${gamePage.hasPrevious()}">
-      <a th:href="@{/{username}/my_lists/{shelfId}(username=${currentUser},  shelfId=${shelf.id}, page=${gamePage.number-1},size=${gamePage.size})}">Previous</a>
-    </span>
-    <th:block th:each="i: ${#numbers.sequence(0, gamePage.totalPages - 1)}">
-      <span th:if="${gamePage.number == i}" class="selected">[[${i}+1]]</span>
-      <span th:unless="${gamePage.number == i}">
-        <a th:href="@{/{username}/my_lists/{shelfId}(username=${currentUser},  shelfId=${shelf.id}, page=${i},size=${gamePage.size})}">[[${i}+1]]</a>
-      </span>
-    </th:block>  
-    <span th:if="${gamePage.hasNext()}">
-      <a th:href="@{/{username}/my_lists/{shelfId}(username=${currentUser},  shelfId=${shelf.id}, page=${gamePage.number+1},size=${gamePage.size})}">Next</a>
-    </span>
-  </div>
+    </table>
+     <button type="button" id="edit" value="Edit" class="delete-entry-button">Edit</button>
+     <button type="button" id="cancel" value="Cancel" class="element-hidden cancel-delete-entry-button">Cancel</button>
+     <button class="element-hidden confirm-deletion-button" id="delete" name="delete">Delete</button>
+     <div class="pagination-div">
+       <div th:unless="${gamePage.getTotalElements == 0}" class="page-numbers">
+         <span th:if="${gamePage.hasPrevious()}">
+           <a th:href="@{/{username}/my_lists/{shelfId}(username=${currentUser},  shelfId=${shelf.id}, page=${gamePage.number-1},size=${gamePage.size})}">Previous</a>
+         </span>
+         <th:block th:each="i: ${#numbers.sequence(0, gamePage.totalPages - 1)}">
+           <span th:if="${gamePage.number == i}" class="selected">[[${i}+1]]</span>
+           <span th:unless="${gamePage.number == i}">
+             <a th:href="@{/{username}/my_lists/{shelfId}(username=${currentUser},  shelfId=${shelf.id}, page=${i},size=${gamePage.size})}">[[${i}+1]]</a>
+           </span>
+         </th:block>  
+         <span th:if="${gamePage.hasNext()}">
+          <a th:href="@{/{username}/my_lists/{shelfId}(username=${currentUser},  shelfId=${shelf.id}, page=${gamePage.number+1},size=${gamePage.size})}">Next</a>
+         </span>
+       </div>
+      </div>
+    </div>
+  </form>  
+
 
   <div class="footer">
     <a href="/contact">Contact</a>

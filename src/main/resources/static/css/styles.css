@@ -222,7 +222,7 @@ html {
 	color: #9ca7fd;
 }
 
-.login-form > input[type="submit"] {
+.login-form > input[type="submit"], .delete-entry-button, .cancel-delete-entry-button, .confirm-deletion-button {
   padding: 12px 10px;
   border: 0;
   background: linear-gradient(to right, #ff4242 0%, #ca2301 100%); 
@@ -233,7 +233,12 @@ html {
   font-family: Calibri, sans-serif;
 }
 
-.login-form > input[type="submit"]:hover, .new-list-button:hover, .list-create-confirm-button:hover, .add-to-list-button:hover {
+.login-form > input[type="submit"]:hover,
+.new-list-button:hover,
+.list-create-confirm-button:hover,
+.add-to-list-button:hover,
+.delete-entry-button:hover,
+.cancel-delete-entry-button:hover {
 	background: linear-gradient(to right, #ca2301 0%, #ff4242 100%);
 	cursor: pointer;
 }
@@ -412,6 +417,10 @@ html {
 
 .pagination-div {
   user-select: none;
+  width: 50%;
+  margin: 0 auto;
+  position: relative;
+  bottom: 35px;
 }
 
 .pagination-div span {
@@ -426,7 +435,7 @@ html {
   background:#ccf;
 }
 
-.checkbox-hidden {
+.element-hidden {
 	display: none;
 }
 
@@ -434,5 +443,22 @@ html {
 	margin-left: 25px;
 	margin-top: 25px;
 	color: white;
+}
+
+.table-div {
+	width: 90%;
+}
+
+.delete-entry-button, .cancel-delete-entry-button, .confirm-deletion-button {
+	margin-left: 25px;
+}
+
+.confirm-deletion-button {
+	background: linear-gradient(to right, #34f016 0%, #2abb13 100%);
+}
+
+.confirm-deletion-button:hover {
+	background: linear-gradient(to right, #2abb13 0%, #34f016 100%);
+	cursor: pointer;
 }
 

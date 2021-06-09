@@ -2,6 +2,7 @@ package com.timucin.gamelookup.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -28,8 +29,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.timucin.gamelookup.domain.Game;
 import com.timucin.gamelookup.domain.Shelf;
 import com.timucin.gamelookup.domain.User;
+import com.timucin.gamelookup.dto.ChosenDeletionEntriesDto;
 import com.timucin.gamelookup.dto.ShelfDto;
 import com.timucin.gamelookup.service.GameService;
+import com.timucin.gamelookup.service.ShelfService;
 import com.timucin.gamelookup.service.UserService;
 
 @Controller
@@ -39,11 +42,13 @@ public class MyListsController {
 	
 	private final UserService userService;
 	private final GameService gameService;
+	private final ShelfService shelfService;
 	
 	@Autowired
-	public MyListsController(UserService userService, GameService gameService) {
+	public MyListsController(UserService userService, GameService gameService, ShelfService shelfService) {
 		this.userService = userService;
 		this.gameService = gameService;
+		this.shelfService = shelfService;
 	}
 	
 	@GetMapping("/{username}/my_lists")
@@ -127,23 +132,50 @@ public class MyListsController {
 		
 		logger.info("pages: " + totalPages);
 		
+		ChosenDeletionEntriesDto chosenDeletionEntriesDto = new ChosenDeletionEntriesDto();
+		for(int i = 0; i < gamePage.getNumberOfElements(); i++) {
+			chosenDeletionEntriesDto.getChosenGames().add(new Game());
+		}
 		
 		model.addAttribute("shelf", targetShelf);
+		model.addAttribute("chosenDeletionEntriesDto", chosenDeletionEntriesDto);
 		
 		return "detailed_list";
 	}
 	
 	
 	@PostMapping(value = "/{username}/my_lists/{shelfId}", params = "delete")
-	public String deleteSelectedEntries(@AuthenticationPrincipal User user
-			//@ModelAttribute ChosenEntriesDto chosenEntriesDto
+	public String deleteSelectedEntries(@AuthenticationPrincipal User user,
+			@ModelAttribute ChosenDeletionEntriesDto chosenDeletionEntriesDto,
+			Model model,
+			@PathVariable String username,
+			@PathVariable Long shelfId
 			) {
 		
+		User currentUser = userService.findByUsername(user.getUsername());
 		
+		Optional<Shelf> possibleShelf = currentUser.getShelves()
+				.stream()
+				.filter(s -> s.getId().equals(shelfId))
+				.findFirst();
 		
+		if(possibleShelf.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+		}
 		
+		Shelf targetShelf = possibleShelf.get();
 		
-		return "detailed_list";
+		Set<Long> chosenGameIds = chosenDeletionEntriesDto
+				.getChosenGames()
+				.stream()
+				.map(s -> s.getId())
+				.collect(Collectors.toSet());
+		
+		targetShelf.getGames().removeIf(game -> chosenGameIds.contains(game.getId()));
+		
+		shelfService.save(targetShelf);
+				
+		return "redirect:/" + username + "/my_lists/" + shelfId;
 	}
 
 }
