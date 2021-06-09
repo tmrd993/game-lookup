@@ -7,6 +7,22 @@
   <title>My List</title>
   <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#check-all').click(function(event) {   
+      if(this.checked) {
+          $(':checkbox').each(function() {
+              this.checked = true;                        
+          });
+      } else {
+          $(':checkbox').each(function() {
+            this.checked = false;                       
+          });
+        }
+      });
+  });
+</script>
 
 
 <body th:with="currentUser=${#httpServletRequest.userPrincipal?.name}">
@@ -36,6 +52,7 @@
         <th>Release Date</th>
         <th>Metacritic Score</th>
         <th>ESRB Rating</th>
+        <th><input type="checkbox" id="check-all"/></th>
       </tr>
     </thead>
     <tbody>
@@ -48,6 +65,7 @@
           <td th:text="${game.releaseDate}" />
           <td th:text="${game.metacriticScore}" />
           <td th:text="${game.esrbRating}" />
+          <td><input type="checkbox" th:id="${'box' + game.id}"/></td>
         </tr>
     </tbody>
   
@@ -59,7 +77,7 @@
     <th:block th:each="i: ${#numbers.sequence(0, gamePage.totalPages - 1)}">
       <span th:if="${gamePage.number == i}" class="selected">[[${i}+1]]</span>
       <span th:unless="${gamePage.number == i}">
-        <a th:href="@{/{username}/my_lists/{shelfId}(username=${currentUser},  shelfId=${shelf.id}, gamePage=${i},size=${gamePage.size})}">[[${i}+1]]</a>
+        <a th:href="@{/{username}/my_lists/{shelfId}(username=${currentUser},  shelfId=${shelf.id}, page=${i},size=${gamePage.size})}">[[${i}+1]]</a>
       </span>
     </th:block>  
     <span th:if="${gamePage.hasNext()}">

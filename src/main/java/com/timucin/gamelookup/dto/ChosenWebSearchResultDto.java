@@ -1,11 +1,6 @@
 package com.timucin.gamelookup.dto;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.validation.constraints.Min;
-
-import com.timucin.gamelookup.domain.Game;
 
 public class ChosenWebSearchResultDto {
 	
@@ -14,25 +9,12 @@ public class ChosenWebSearchResultDto {
 	@Min(value = 1, message = "Please select a valid list")
 	private long chosenShelfId;
 	
-	private List<Game> allResults;
-	
-	public ChosenWebSearchResultDto(int chosenGameIndex, long chosenShelfId, List<Game> allResults) {
+	public ChosenWebSearchResultDto(int chosenGameIndex, long chosenShelfId) {
 		this.chosenGameIndex = chosenGameIndex;
 		this.chosenShelfId = chosenShelfId;
-		this.allResults = allResults;
 	}
 	
-	public ChosenWebSearchResultDto() {
-		allResults = new ArrayList<>();
-	}
-	
-	public List<Game> getAllResults() {
-		return allResults;
-	}
-
-	public void setAllResults(List<Game> allResults) {
-		this.allResults = allResults;
-	}
+	public ChosenWebSearchResultDto() {}
 	
 	public int getChosenGameIndex() {
 		return chosenGameIndex;

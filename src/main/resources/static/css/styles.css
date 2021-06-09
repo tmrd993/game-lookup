@@ -426,3 +426,7 @@ html {
   background:#ccf;
 }
 
+.checkbox-hidden {
+	display: none;
+}
+

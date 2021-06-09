@@ -113,7 +113,7 @@ public class MyListsController {
 		
 		Shelf targetShelf = possibleShelf.get();
 		
-		Page<Game> gamePage = gameService.findAll(PageRequest.of(page, size));
+		Page<Game> gamePage = gameService.findPaginatedFromShelf(targetShelf, PageRequest.of(page, size));
 		
 		model.addAttribute("gamePage", gamePage);
 		
@@ -127,7 +127,21 @@ public class MyListsController {
 		
 		logger.info("pages: " + totalPages);
 		
+		
 		model.addAttribute("shelf", targetShelf);
+		
+		return "detailed_list";
+	}
+	
+	
+	@PostMapping(value = "/{username}/my_lists/{shelfId}", params = "delete")
+	public String deleteSelectedEntries(@AuthenticationPrincipal User user
+			//@ModelAttribute ChosenEntriesDto chosenEntriesDto
+			) {
+		
+		
+		
+		
 		
 		return "detailed_list";
 	}
