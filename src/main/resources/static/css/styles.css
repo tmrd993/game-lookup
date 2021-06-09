@@ -430,3 +430,9 @@ html {
 	display: none;
 }
 
+.empty-list-notice {
+	margin-left: 25px;
+	margin-top: 25px;
+	color: white;
+}
+

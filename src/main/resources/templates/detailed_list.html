@@ -42,7 +42,9 @@
 	</div > <!-- topnav-right -->
   </div> <!-- topnav -->
   
-  <table class="game-list-table" border="1">
+  <h2 class="empty-list-notice" th:if="${gamePage.getTotalElements == 0}">This list is empty. Try adding some games to it using the web search feature.</h2>
+  
+  <table th:unless="${gamePage.getTotalElements == 0}" class="game-list-table" border="1">
     <thead>
       <tr>
         <th>ID</th>
@@ -70,7 +72,7 @@
     </tbody>
   
   </table>
-  <div class="pagination-div page-numbers">
+  <div th:unless="${gamePage.getTotalElements == 0}" class="pagination-div page-numbers">
     <span th:if="${gamePage.hasPrevious()}">
       <a th:href="@{/{username}/my_lists/{shelfId}(username=${currentUser},  shelfId=${shelf.id}, page=${gamePage.number-1},size=${gamePage.size})}">Previous</a>
     </span>
