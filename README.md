@@ -11,4 +11,25 @@ Full stack web application using Spring Boot to manage video game collections wi
 6. Open up your browser and navigate to localhost:8080
 7. Log-in using username: "user", password: "password" (alternatively, add a new user, either using the sign up form or simply add one to the database in the DataLoader class)
 
-Note: An internet connection is required to use the web search feature
+Note: An internet connection is required to use the web search feature  
+
+# Screenshots  
+## Login/Signup  
+![login](screenshots/gamelookuplogin.png)  
+
+![signup](screenshots/gamelookupsignup.png)  
+
+## Web Search
+![web_search](screenshots/gamelookupwebsearch.png)  
+  
+## Web Search entry selection
+![web_search_select](screenshots/gamelookupwebsearchaddtolist.png)  
+
+## My lists
+![my_lists](screenshots/gamelookupmylists.png)  
+
+## Detailed list view
+![detailed_list](screenshots/gamelookuplistviewdetailed.png)  
+
+## Detailed list edit entries
+![detailed_list_edit](screenshots/gamelookuplistviewedit.png)
