@@ -11,40 +11,44 @@ import com.timucin.gamelookup.repository.GenreRepository;
 
 @Service
 public class GenreService {
-	
-private final GenreRepository genreRepository;
-	
+
+	private final GenreRepository genreRepository;
+
 	@Autowired
 	public GenreService(GenreRepository genreRepository) {
 		this.genreRepository = genreRepository;
 	}
-	
+
 	public List<Genre> findAll() {
 		return genreRepository.findAll();
 	}
-	
+
 	public Optional<Genre> findById(Long id) {
 		return genreRepository.findById(id);
 	}
-	
+
 	public Genre save(Genre genre) {
 		return genreRepository.save(genre);
 	}
-	
+
 	public List<Genre> saveAll(Iterable<Genre> genres) {
 		return genreRepository.saveAll(genres);
 	}
-	
+
 	public void delete(Genre genre) {
 		genreRepository.delete(genre);
 	}
-	
+
 	public void deleteById(Long id) {
 		genreRepository.deleteById(id);
 	}
-	
+
 	public Optional<Genre> findByName(String name) {
 		return genreRepository.findByName(name);
+	}
+
+	public void deleteAll(Iterable<Genre> genres) {
+		genreRepository.deleteAll(genres);
 	}
 
 }

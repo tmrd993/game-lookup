@@ -173,6 +173,14 @@ public class MyListsController {
 		
 		targetShelf.getGames().removeIf(game -> chosenGameIds.contains(game.getId()));
 		
+		for(Long id : chosenGameIds) {
+			if(id != null) {
+				if(!shelfService.containsGameAnyShelf(gameService.findById(id).get())) {
+					gameService.deleteById(id);
+				} 
+			}
+		}
+		
 		shelfService.save(targetShelf);
 				
 		return "redirect:/" + username + "/my_lists/" + shelfId;

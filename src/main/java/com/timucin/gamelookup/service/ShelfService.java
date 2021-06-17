@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.timucin.gamelookup.domain.Game;
 import com.timucin.gamelookup.domain.Shelf;
 import com.timucin.gamelookup.repository.ShelfRepository;
 
@@ -41,6 +42,15 @@ public class ShelfService {
 	
 	public Optional<Shelf> findByName(String name) {
 		return shelfRepository.findByName(name);
+	}
+	
+	// check if the given game is currently on a shelf
+	public boolean containsGameAnyShelf(Game game) {
+	    return findAll()
+		    .stream()
+		    .filter(shelfGames -> shelfGames.getGames().contains(game))
+		    .findAny()
+		    .isPresent();
 	}
 
 

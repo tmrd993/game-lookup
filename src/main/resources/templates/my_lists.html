@@ -71,6 +71,7 @@
         <label for="description">Description</label>
         <textarea name="description" th:field="*{description}">Description...</textarea>
         <span style="color: red;" th:if="${#fields.hasErrors('description')}" th:errorclass="error" th:errors="*{description}"></span>
+        <p style="color: red;" th:if="${#fields.hasErrors('${shelfDto}')}" th:errors="${shelfDto}"></p>
         
         <button type="submit" class="list-create-confirm-button">Create</button>
       </form>
