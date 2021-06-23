@@ -31,8 +31,38 @@
     </div>
   </div>
   
-  <h1 style="color:white;">TBD</h1>
+  <div class="contact-container">
+    <div class="contact">
+      <form action="#" th:action="@{/contact}" method="post" th:object="${contactFormDto}">
+      
+        <div class="contact-form">
+          <h2 style="color: white;">Questions and Suggestions</h2>
+        
+          <label for="name"></label>
+          <input type="text" class="form-field" id="name" 
+            name="name" placeholder="Name" th:field="*{name}">
+          <span style="color: #FFFF00;" th:if="${#fields.hasErrors('name')}" th:errorclass="error" th:errors="*{name}"></span>
+        
+        
+          <label for="email"></label>
+          <input type="text" class="form-field" id="email" 
+            name="email" placeholder="Email" th:field="*{email}">
+          <span style="color: #FFFF00;" th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}"></span>
+        
+        
+          <label for="description"></label>
+          <textarea class="form-field" id="description" 
+            name="description" placeholder="Description" th:field="*{description}"></textarea>
+          <span style="color: #FFFF00;" th:if="${#fields.hasErrors('description')}" th:errorclass="error" th:errors="*{description}"></span>
+        
+          <input type="submit" value="Submit">
+        </div>
+    
+      </form>
+    </div>
   
+  
+  </div>  
   
   
   <div class="footer">

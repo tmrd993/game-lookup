@@ -159,13 +159,13 @@ html {
 	color: white;
 }
 
-.login-container {
+.login-container, .contact-container {
   height: 100vh;
   position: relative;
   top: 25px;
 }
 
-.login {
+.login, .contact {
   margin: auto;
   overflow: hidden;
   flex-direction: column;
@@ -188,17 +188,17 @@ html {
   color: black;
 }
 
-.login-form {
+.login-form, .contact-form {
   max-width: 80%;
   display: flex;
   flex-direction: column;
 }
 
-.login-form > p {
+.login-form > p, .contact-form > p {
   text-align: right;
 }
 
-.login-form > p > a {
+.login-form > p > a, .contact-form > p > a {
   color: #000;
   font-size: 14px;
 }
@@ -222,7 +222,11 @@ html {
 	color: #9ca7fd;
 }
 
-.login-form > input[type="submit"], .delete-entry-button, .cancel-delete-entry-button, .confirm-deletion-button {
+.login-form > input[type="submit"],
+.delete-entry-button,
+.cancel-delete-entry-button,
+.confirm-deletion-button,
+.contact-form > input[type="submit"] {
   padding: 12px 10px;
   border: 0;
   background: linear-gradient(to right, #ff4242 0%, #ca2301 100%); 
@@ -238,7 +242,8 @@ html {
 .list-create-confirm-button:hover,
 .add-to-list-button:hover,
 .delete-entry-button:hover,
-.cancel-delete-entry-button:hover {
+.cancel-delete-entry-button:hover,
+.contact-form > input[type="submit"]:hover {
 	background: linear-gradient(to right, #ca2301 0%, #ff4242 100%);
 	cursor: pointer;
 }
@@ -462,3 +467,7 @@ html {
 	cursor: pointer;
 }
 
+.contact textarea {
+	resize: none;
+	height: 90px;
+}
