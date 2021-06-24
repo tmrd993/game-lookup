@@ -13,9 +13,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.timucin.gamelookup.dto.ContactFormDto;
+import com.timucin.gamelookup.service.EmailService;
 
 @Controller
 public class HomeController {
+	
+	private final EmailService emailService;
+	
+	public HomeController(EmailService emailService) {
+		this.emailService = emailService;
+	}
 
 	@GetMapping({ "", "/", "home", "home.html" })
 	public String home() {
@@ -50,7 +57,11 @@ public class HomeController {
 			return "contact";
 		}
 		
-		// TODO: send email here
+		String name = contactFormDto.getName();
+		String email = contactFormDto.getEmail();
+		String message = contactFormDto.getDescription();
+		
+		emailService.sendSimpleMessage(name, email, message);
 		
 		return "contact_success";
 	}
